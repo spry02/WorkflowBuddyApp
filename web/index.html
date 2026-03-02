@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <title>WorkflowBuddy</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="update.css">
+    <link rel="stylesheet" href="loading.css">
+    <script type="text/javascript" src="/eel.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="mainContainer">
+        <h1>WorkflowBuddy</h1>
+        <p><span>Connection status: </span><span id="connectionIndicator">🔴</span><span id="connectionStatus">Disconnected</span></p>
+        <div id="buttonContainer">
+            <div class="row">
+                <div class="button"><button class="btn" id="btn1-1"></button><input type="text" class="nameInput" id="txt1-1" placeholder="Opis funkcji" maxlength="8" disabled></div>
+                <div class="button"><button class="btn" id="btn1-2"></button><input type="text" class="nameInput" id="txt1-2" placeholder="Opis funkcji" maxlength="8" disabled></div>
+                <div class="button"><button class="btn" id="btn1-3"></button><input type="text" class="nameInput" id="txt1-3" placeholder="Opis funkcji" maxlength="8" disabled></div>
+            </div>
+            <div class="row">
+                <div class="button"><button class="btn" id="btn2-1"></button><input type="text" class="nameInput" id="txt2-1" placeholder="Opis funkcji" maxlength="8" disabled></div>
+                <div class="button"><button class="btn" id="btn2-2"></button><input type="text" class="nameInput" id="txt2-2" placeholder="Opis funkcji" maxlength="8" disabled></div>
+                <div class="button"><button class="btn" id="btn2-3"></button><input type="text" class="nameInput" id="txt2-3" placeholder="Opis funkcji" maxlength="8" disabled></div>
+            </div>
+        </div>
+        <div id="updatePopup">
+            <div class="navbar">
+                <p id="updateLabel">placeholder for button id</p>
+                <button id="backButton">&#11198;</button>
+            </div>
+            <div class="updateContent">
+                <div class="updateButton">
+                    <button class="updateBtn" id="updateBtn"></button>
+                    <input type="text" class="updateNameInput" id="updateTxt" placeholder="Opis funkcji" maxlength="8">
+                    <div class="radioContainer">
+                        <input type="radio" id="rad1" class="rad" name="typ" value="shortcut">
+                        <label for="rad1">Hotkey</label>
+
+                        <input type="radio" id="rad2" class="rad" name="typ" value="macro">
+                        <label for="rad2">Tekst</label>
+
+                        <input type="radio" id="rad3" class="rad" name="typ" value="cmd">
+                        <label for="rad3">App/cmd</label>
+                    </div>
+                    <div class="typeSelected">
+                        <div class="selectors" id="sel1">
+                            <input type="text" class="selInputs hotkeyInput" id="hotkeyInput" placeholder="Wpisz skrót klawiszowy">
+                            <span class="hotkeyInfo">Poszczególne klawisze muszą zostać oddzielone spacją</span>
+                        </div>
+                        <div class="selectors" id="sel2">
+                            <input type="text" class="selInputs" id="macroInput" placeholder="Wpisz tekst do wstawienia">
+                        </div>
+                        <div class="selectors" id="sel3">
+                            <input type="text" class="selInputs" id="commandInput" placeholder="Wpisz komendę / app path">
+                        </div>
+                    </div>
+                    <div class="btnContainer">
+                        <button class="delete" id="delete">Wyczyść</button>
+                        <button class="submit" id="submit">Zatwierdź</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,180 @@
+:root {
+    --updateOuterSize: 280px;
+    --updateInnerSize: 128px;
+    --updateFontSize: 9pt;
+    --navbarHeight: 50px;
+}
+
+#updatePopup {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: var(--bgcolor);
+    width: 360px;
+    height: 400px;
+    transform: translate(-50%, -50%);
+    border-radius: 20% 20% 10% 10%;
+    corner-shape: squircle;
+    border: 2px solid var(--accentcolor);
+}
+
+.navbar {
+    width: 100%;
+    height: var(--navbarHeight);
+    display: flex;
+    background: var(--accentcolor);
+    border-radius: 100px 100px 0 0;
+    corner-shape: squircle;
+}
+
+#backButton {
+    width: var(--navbarHeight);
+    height: var(--navbarHeight);
+    border: none;
+    background: transparent;
+    font-size: 12pt;
+    color: white;
+    border-radius: 0 calc(var(--navbarHeight)/2) 0 0;
+    cursor: pointer;
+
+    &:active {
+        background: var(--clickAccentcolor);
+    }
+}
+
+#updateLabel {
+    flex-grow: 1;
+    margin: 0 15px;
+    color: white;
+    align-self: center;
+    font-size: var(--updateFontSize);
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-weight: bold;
+}
+
+.updateContent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100% - var(--navbarHeight));
+}
+
+.updateButton {
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: var(--updateOuterSize);
+    height: calc(var(--updateOuterSize) + 20px);
+    background-color: var(--backplatecolor);
+    border-radius: 50%;
+    corner-shape: squircle;
+}
+
+.updateButton>.updateBtn {
+    width: var(--updateInnerSize);
+    height: var(--updateInnerSize);
+    border: 1px solid white;
+    cursor: pointer;
+    border-radius: 50%;
+    corner-shape: squircle;
+}
+
+.updateButton>.radioContainer>label {
+    font-size: var(--updateFontSize);
+}
+
+.updateNameInput {
+    width: var(--updateInnerSize);
+    text-align: center;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: var(--updateFontSize);
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-weight: bold;
+}
+
+.submit {
+    margin-top: 10px;
+    width: 45%;
+    height: 20px;
+    background: var(--accentcolor);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    &:active {
+        background: var(--clickAccentcolor);
+    }
+}
+.delete {
+    margin-top: 10px;
+    width: 45%;
+    height: 20px;
+    background: #ff4d4d;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    &:active {
+        background: #cc0000;
+    }
+}
+
+.btnContainer {
+    display: flex;
+    justify-content: space-evenly;
+    width: calc(var(--updateOuterSize) - 20px);
+    margin-top: 45px;
+}
+
+.radioContainer {
+    margin-top: 10px;
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+}
+
+.selInputs {
+    width: calc(var(--updateOuterSize) - 20px);
+    text-align: center;
+    background: transparent;
+    border: 1px solid white;
+    color: white;
+    font-size: 16px;
+    margin-top: 10px;
+    border-radius: 10px;
+}
+
+.selectors {
+    display: none;
+    align-items: center;
+    justify-content:space-evenly;
+}
+
+.modifierSelect {
+    margin-top: 10px;
+}
+
+.hotkeyInput {
+    position: relative;
+}
+
+.hotkeyInfo {
+    width: 260px;
+    color: #ffffff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1; 
+    top: 70%;
+    left: 50%;
+    margin-left: -130px;
+    border: white 1px solid;
+    font-size: var(--updateFontSize);
+}

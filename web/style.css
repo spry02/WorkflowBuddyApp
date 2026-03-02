@@ -1,0 +1,60 @@
+:root {
+    --bgcolor: #2c3e50;
+    --accentcolor: #7800f9;
+    --clickAccentcolor: #5e00c7;
+    --backplatecolor: #00000012;
+    --OuterSize: 128px;
+    --InnerSize: 96px;
+    --FontSize: 9pt;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--bgcolor);
+    color:  white;
+}
+
+#buttonContainer, .mainContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 8px;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+.button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: var(--OuterSize);
+    height: var(--OuterSize);
+    background-color: var(--backplatecolor);
+    border-radius: 50%;
+    corner-shape: squircle;
+}
+
+.button>button {
+    width: var(--InnerSize);
+    height: var(--InnerSize);
+    background: none;
+    border: 1px solid white;
+    cursor: pointer;
+    border-radius: 50%;
+    corner-shape: squircle;
+}
+
+.nameInput {
+    width: var(--InnerSize);
+    text-align: center;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: var(--FontSize);
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-weight: bold;
+}
+
