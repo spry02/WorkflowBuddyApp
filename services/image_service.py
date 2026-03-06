@@ -43,7 +43,14 @@ class ImageService:
         except Exception as e:
             print(f"Images loading failed: {e}")
 
-    def load_paths(self) -> list:
+    def load_paths(self) -> dict:
+        """
+        Returns list of all buttons with paths
+
+        Returns:
+            images_list (dict):  Dict of buttons and img paths format {button_id: image_path}
+
+        """
         try:
             extensions = ('.png', '.jpg', '.jpeg', '.bmp')
             images_list = {
@@ -53,12 +60,29 @@ class ImageService:
         except Exception as e:
             print(f"Images loading failed: {e}")
     
-    def get_image_path(self, button_id) -> Path:
+    def get_image_path(self, button_id: str) -> Path:
+        """
+        Returns image path
+
+        Parameters: 
+            button_id (str): Id of button
+
+        Returns:
+            image_path (Path): Path of image
+
+        """
         if Path.exists(self.images_path / Path(button_id).with_suffix(".jpg")):
             return Path(self.images_path) / Path(button_id).with_suffix(".jpg")
     
     def save(self, button_id: str, image_path: str) -> bool:
-        """Save image"""
+        """
+        Save image
+
+        Parameters: 
+            button_id (str): Id of button to save
+            image_path (str): Image path as string
+
+        """
         try:
             img = Image.open(image_path)
             if img.mode == 'RGBA':
@@ -73,6 +97,14 @@ class ImageService:
             return False
         
     def save_from_b64(self, button_id: str, image:str):
+        """
+        Save image from base64
+
+        Parameters: 
+            button_id (str): Id of button to save
+            image (str): Image data as base64
+
+        """
         try:
             _, encoded = image.split(',', 1)
             image_data_decoded = base64.b64decode(encoded)
@@ -89,7 +121,12 @@ class ImageService:
             print(f"Error while saving from b64: {e}")
     
     def delete_image(self, button_id: str) -> bool:
-        """Delete image"""
+        """
+        Delete image
+        
+        Parameters: 
+            button_id (str): Id of button which needs deletion
+        """
         try:
             os.remove(Path(self.images_path) / Path(button_id).with_suffix(".jpg"))
             return True
@@ -98,6 +135,15 @@ class ImageService:
             return False
         
     def load_b64_image(self, image_path: str):
+        """
+        Load image and return them as b64
+        
+        Parameters: 
+            image_path (str): Path to image given as string
+
+        Returns:
+            encoded (str): returns f'data:image/jpg;base64,{encoded}'
+        """
         try:
             if not os.path.exists(image_path):
                 return None

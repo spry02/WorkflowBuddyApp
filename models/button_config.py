@@ -16,7 +16,7 @@ class ActionType(Enum):
     
     @classmethod
     def from_string(cls, value: str) -> 'ActionType':
-        """Stwórz ActionType ze stringa (case-insensitive)"""
+        """Stwórz ActionType ze stringa"""
         try:
             return cls(value.lower())
         except ValueError:
