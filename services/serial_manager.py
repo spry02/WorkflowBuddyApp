@@ -105,13 +105,14 @@ class SerialManager:
             try:
                 if self.connection.in_waiting:
                     data = self.connection.readline().decode(errors='ignore').strip()
-                    print(f"Received: {data}")
 
                     if data.startswith("btn"):
+                        print(f"Pressed: {data}")
                         from models import ButtonClass
                         button = ButtonClass(button_id=data, data_service=self.data)
                         button.execute()
-                        
+                    else:
+                        print(f"Received: {data}")
             except Exception as e:
                 print(e)
                 break

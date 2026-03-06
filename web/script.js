@@ -78,22 +78,7 @@ async function updateButtonDialog(button_id) {
     }
 }
 
-$('.btn').click(async (element) => {
-    currentButtonId = element.target.id; 
-    await updateButtonDialog(currentButtonId);
-})
-
-$('.rad').click((element) => {
-    $('#sel1').css('display','none');
-    $('#sel2').css('display','none');
-    $('#sel3').css('display','none');
-
-    $('#sel'+element.target.id[3]).css('display','block');
-});
-
-$('#backButton').click(async () => {
-    currentButtonId = null;
-    lastImgData = null;
+function common_clear_action() {
     $('#updatePopup').css('display', 'none');
 
     $(".rad").each(function(){
@@ -111,6 +96,26 @@ $('#backButton').click(async () => {
 
     $(".btn").disabled = false
     $(".btn").css('cursor', "pointer")
+};
+
+$('.btn').click(async (element) => {
+    currentButtonId = element.target.id; 
+    await updateButtonDialog(currentButtonId);
+})
+
+$('.rad').click((element) => {
+    $('#sel1').css('display','none');
+    $('#sel2').css('display','none');
+    $('#sel3').css('display','none');
+
+    $('#sel'+element.target.id[3]).css('display','block');
+});
+
+$('#backButton').click(async () => {
+    currentButtonId = null;
+    lastImgData = null;
+
+    common_clear_action();
 
     await loadSavedConfig();
 });
@@ -167,12 +172,7 @@ $('#submit').click(async () => {
             } catch (error) {
                 console.error('Error loading existing image:', error);
             }
-        console.log(currentButtonId, atype, action, description, lastImgData)
-        
-        $('#'+currentButtonId).css('background', `white no-repeat center center url(${lastImgData})`);
-        $('#'+currentButtonId).css('backgroundSize', 96 + 'px ' + 96 + 'px');
-        
-            
+         
         const txtElement = $("#"+currentButtonId.replace("btn", "txt"));
 
         txtElement.attr('placeholder', description)
@@ -181,57 +181,25 @@ $('#submit').click(async () => {
     currentButtonId = null;
     lastImgData = null;
 
-    $(".rad").each(function(){
-        $(this)[0].checked=false
-    })
-    
-    $('#sel1').css('display','none');
-    $('#sel2').css('display','none');
-    $('#sel3').css('display','none');
-    
-    $("#updateTxt").val("")
-    $("#hotkeyInput").val("")
-    $("#macroInput").val("")
-    $("#commandInput").val("")
-    
-    $(".btn").disabled = false
-    $(".btn").css('cursor', "pointer")
+    common_clear_action();
 
     await loadSavedConfig();
 });
 
 $('#delete').click(async () => {
-    // $('#'+currentButtonId).css('background', 'none');
-    // const txtElement = $("#"+currentButtonId.replace("btn", "txt"));
-    // txtElement.attr('placeholder', "Opis funkcji")
+    $('#'+currentButtonId).css('background', 'none');
+    const txtElement = $("#"+currentButtonId.replace("btn", "txt"));
+    txtElement.attr('placeholder', "Opis funkcji")
     
-    // $('#updatePopup').css('display', 'none');
+    common_clear_action();
 
-    // $(".rad").each(function(){
-    //     $(this)[0].checked=false
-    // })
-    
-    // $('#sel1').css('display','none');
-    // $('#sel2').css('display','none');
-    // $('#sel3').css('display','none');
-    
-    // $("#updateTxt").val("")
-    // $("#hotkeyInput").val("")
-    // $("#macroInput").val("")
-    // $("#commandInput").val("")
-    
-    // $(".btn").disabled = false
-    // $(".btn").css('cursor', "pointer")
+    await eel.clear_button(currentButtonId)();
 
-    await eel.clear_button()();
+    currentButtonId = null;
+    lastImgData = null;
 
-    // currentButtonId = null;
-    // lastImgData = null;
-
-    // await loadSavedConfig();
+    await loadSavedConfig();
 });
-
-
 
 eel.expose(setConnection)
 function setConnection(info) {

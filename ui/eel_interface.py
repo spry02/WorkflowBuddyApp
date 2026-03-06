@@ -16,7 +16,7 @@ class EelInterface:
                  file_transfer: FileTransferService,
                  web_path: str = 'web',
                  host: str = 'localhost',
-                 port: int = 8080,
+                 port: int = 8888,
                  ):
         self.config = config
         self.serial = serial

@@ -1,14 +1,11 @@
 from typing import Optional
 from enum import Enum
-import logging
 from pathlib import Path
 from services import DataService
 import pyautogui
 import os
 import time
 import keyboard
-
-logger = logging.getLogger(__name__)
 
 class ActionType(Enum):
     """Typy akcji przycisku"""
@@ -23,7 +20,7 @@ class ActionType(Enum):
         try:
             return cls(value.lower())
         except ValueError:
-            logger.warning(f"Unknown action type: {value}, defaulting to NONE")
+            print(f"Unknown action type: {value}, defaulting to NONE")
             return cls.NONE
     
     def __str__(self) -> str:

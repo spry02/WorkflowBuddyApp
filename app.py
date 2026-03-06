@@ -1,18 +1,6 @@
 import webview
-import serial
-import serial.tools.list_ports
-import os
-import sys
-import base64
-from PIL import Image
-from io import BytesIO
-import shutil
-import json
-import time
-import pyautogui
-import numpy as np
 from services import SerialManager, ConfigService, ImageService, FileTransferService, LabelService, DataService
-from models import ButtonConfig, ButtonClass
+from models import ButtonConfig
 from ui import EelInterface
 import threading as th
 
@@ -78,7 +66,7 @@ class WorkflowBuddy:
         
         win = webview.create_window(
             title="WorkflowBuddy",
-            url="http://localhost:8080",
+            url="http://localhost:8888",
             width=640,
             height=480,
             resizable=False,
