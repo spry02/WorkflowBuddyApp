@@ -2,6 +2,7 @@ from typing import Optional
 from enum import Enum
 from pathlib import Path
 from services import DataService
+import subprocess
 import pyautogui
 import os
 import time
@@ -134,7 +135,7 @@ class ButtonClass(ButtonConfig):
     def text_write(self) -> bool:
         try:
             time.sleep(.2)
-            keyboard.write(self.action_data, delay=.01)
+            keyboard.write(self.action_data, delay=.02)
             return True
         except Exception as e:
             print(f"Error while executing text button: {e}")
@@ -143,9 +144,9 @@ class ButtonClass(ButtonConfig):
     def program_execute(self) -> bool:
         try:
             if Path.exists(Path(self.action_data)):
-                os.startfile(Path(self.action_data))
+                subprocess.Popen(self.action_data, stdin=None, stdout=None, stderr=None)
             else:
-                os.system(self.action_data)
+                subprocess.Popen(self.action_data, stdin=None, stdout=None, stderr=None, shell=True)
             return True
         except Exception as e:
             print(f"Error while executing program button: {e}")

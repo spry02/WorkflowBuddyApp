@@ -25,7 +25,8 @@ class WorkflowBuddy:
                                self.labels, 
                                self.data, 
                                self.button_config, 
-                               self.file_transfer)
+                               self.file_transfer,
+                               self.paths['web'])
         
         self.event_loop = None
 
@@ -57,7 +58,7 @@ class WorkflowBuddy:
         }
     
     def run(self):
-        """Run application"""        
+        """Run application"""
         eel_thread = th.Thread(
             target=lambda: self.ui.start(mode=None, block=True),
             daemon=True

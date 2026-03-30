@@ -54,8 +54,10 @@ class SerialManager:
                         print("Checking port:", port_info.device)
                         ser = serial.Serial(port_info.device, 115200, timeout=1)
                         print("Opened port:", port_info.device)
-                        ser.write("\n".encode())
+                        ser.write("connect\n".encode())
+                        time.sleep(.5)
                         line = ser.readline().decode(errors="ignore").strip()
+                        print(line)
                         ser.close()
 
                         if (line=="#ESP32_WORKFLOWBUDDY_READY"):
